@@ -79,6 +79,7 @@
   <ItemGroup>
     <Compile Include="Controllers\MainController.cs" />
     <Compile Include="Models\DataServiceMetadataProvider.cs" />
+    <Compile Include="Models\DataSource.cs" />
     <Compile Include="Models\ServiceProvider.cs" />
     <Compile Include="Models\TestServiceModel.cs" />
     <Compile Include="Routes.cs" />

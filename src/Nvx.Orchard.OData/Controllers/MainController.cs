@@ -20,6 +20,11 @@ namespace Nvx.Orchard.OData.Controllers
 		[HttpGet]
 		public ActionResult Index(params string[] resource) 
 		{
+            //Here is code to process request:
+            //var p = new ServiceProvider<DataSource>(new DataSource(_contentManager));
+            //p.ProcessRequest();
+
+
 			TestServiceModel model = new TestServiceModel();
 			string path = Request.Url.PathAndQuery,
 				appPath = Request.ApplicationPath;
@@ -34,8 +39,6 @@ namespace Nvx.Orchard.OData.Controllers
 			var u = new Uri(result, UriKind.Relative);
 			// выбор параметров
 
-			// выборка всех типов Orchard
-			List<string> ApplicationTypes = _contentManager.GetContentTypeDefinitions().Select(a => a.DisplayName).ToList();
 		}
 
 		resource = Request.Url.Segments;

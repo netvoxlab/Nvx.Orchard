@@ -1,9 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Services.Providers;
+using Orchard.ContentManagement;
 
 namespace Nvx.Orchard.OData.Models {
     public class  DataServiceMetadataProvider: IDataServiceMetadataProvider {
+        public DataSource DataSource { get; set; }
+        private Dictionary<string, ResourceType> resourceTypes = new Dictionary<string, ResourceType>();
+        private Dictionary<string, ResourceSet> resourceSets = new Dictionary<string, ResourceSet>();
+
+        public DataServiceMetadataProvider(DataSource source)
+        {
+            DataSource = source;
+
+            foreach (var definition in DataSource.ContentManager.GetContentTypeDefinitions())
+            {
+                var name = definition.Name;
+                var r = new ResourceType(typeof(ContentItem), ResourceTypeKind.EntityType, null, null, name, false);
+                r.SetReadOnly();
+                resourceTypes.Add(name, r);
+                var s = new ResourceSet(name, r);
+                s.CustomState = definition;
+                s.SetReadOnly();
+                resourceSets.Add(name, s);
+            }
+        }
+
         #region Implementation of IDataServiceMetadataProvider
 
         /// <summary>
@@ -14,7 +36,7 @@ namespace Nvx.Orchard.OData.Models {
         /// </returns>
         /// <param name="name">Name of the <see cref="T:System.Data.Services.Providers.ResourceSet"/> to resolve.</param><param name="resourceSet">Returns the resource set or a null value if a resource set with the given <paramref name="name"/> is not found.</param>
         public bool TryResolveResourceSet(string name, out ResourceSet resourceSet) {
-            throw new NotImplementedException();
+            return resourceSets.TryGetValue(name, out resourceSet); 
         }
 
         /// <summary>
@@ -36,7 +58,7 @@ namespace Nvx.Orchard.OData.Models {
         /// </returns>
         /// <param name="name">Name of the type to resolve.</param><param name="resourceType">Returns the resource type or a null value if a resource type with the given <paramref name="name"/> is not found.</param>
         public bool TryResolveResourceType(string name, out ResourceType resourceType) {
-            throw new NotImplementedException();
+            return resourceTypes.TryGetValue(name, out resourceType); 
         }
 
         /// <summary>
@@ -47,7 +69,7 @@ namespace Nvx.Orchard.OData.Models {
         /// </returns>
         /// <param name="resourceType">The base <see cref="T:System.Data.Services.Providers.ResourceType"/>.</param>
         public IEnumerable<ResourceType> GetDerivedTypes(ResourceType resourceType) {
-            throw new NotImplementedException();
+            yield break;
         }
 
         /// <summary>
@@ -58,7 +80,7 @@ namespace Nvx.Orchard.OData.Models {
         /// </returns>
         /// <param name="resourceType">A <see cref="T:System.Data.Services.Providers.ResourceType"/> object to evaluate.</param>
         public bool HasDerivedTypes(ResourceType resourceType) {
-            throw new NotImplementedException();
+            return false;
         }
 
         /// <summary>
@@ -69,7 +91,8 @@ namespace Nvx.Orchard.OData.Models {
         /// </returns>
         /// <param name="name">Name of the service operation to resolve.</param><param name="serviceOperation">Returns the service operation or a null value if a service operation with the given <paramref name="name"/> is not found.</param>
         public bool TryResolveServiceOperation(string name, out ServiceOperation serviceOperation) {
-            throw new NotImplementedException();
+            serviceOperation = null;
+            return false;
         }
 
         /// <summary>
@@ -79,7 +102,7 @@ namespace Nvx.Orchard.OData.Models {
         /// String that contains the namespace name.
         /// </returns>
         public string ContainerNamespace {
-            get { throw new NotImplementedException(); }
+            get { return "Orchard"; }
         }
 
         /// <summary>
@@ -89,7 +112,7 @@ namespace Nvx.Orchard.OData.Models {
         /// String that contains the name of the container.
         /// </returns>
         public string ContainerName {
-            get { throw new NotImplementedException(); }
+            get { return "ContentTypes"; }
         }
 
         /// <summary>
@@ -99,7 +122,7 @@ namespace Nvx.Orchard.OData.Models {
         /// An <see cref="T:System.Collections.Generic.IEnumerable`1"/> collection of <see cref="T:System.Data.Services.Providers.ResourceSet"/> objects.
         /// </returns>
         public IEnumerable<ResourceSet> ResourceSets {
-            get { throw new NotImplementedException(); }
+            get { return this.resourceSets.Values; }
         }
 
         /// <summary>
@@ -109,7 +132,7 @@ namespace Nvx.Orchard.OData.Models {
         /// An <see cref="T:System.Collections.Generic.IEnumerable`1"/> collection of <see cref="T:System.Data.Services.Providers.ResourceType"/> objects.
         /// </returns>
         public IEnumerable<ResourceType> Types {
-            get { throw new NotImplementedException(); }
+            get { return this.resourceTypes.Values; }
         }
 
         /// <summary>
@@ -119,7 +142,7 @@ namespace Nvx.Orchard.OData.Models {
         /// An <see cref="T:System.Collections.Generic.IEnumerable`1"/> collection of <see cref="T:System.Data.Services.Providers.ServiceOperation"/> objects.
         /// </returns>
         public IEnumerable<ServiceOperation> ServiceOperations {
-            get { throw new NotImplementedException(); }
+            get { yield break; }
         }
 
         #endregion
