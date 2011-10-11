@@ -1,0 +1,36 @@
+<Configuration>
+  <SettingsComponent>
+    <string />
+    <integer />
+    <boolean>
+      <setting name="SolutionAnalysisEnabled">False</setting>
+    </boolean>
+  </SettingsComponent>
+  <RecentFiles>
+    <RecentFiles>
+      <File id="D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A/d:Drivers/f:OpenStreetMapNodeDriver.cs" caret="875" fromTop="11" />
+      <File id="D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A/d:Handlers/f:OpenStreetMapNodeHandler.cs" caret="0" fromTop="0" />
+      <File id="D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A/d:Models/f:OpenStreetMapNode.cs" caret="364" fromTop="0" />
+      <File id="D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A/d:Views/d:EditorTemplates/d:Parts/f:OsmMap.cshtml" caret="0" fromTop="0" />
+      <File id="D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A/f:OsmMath.cs" caret="0" fromTop="0" />
+      <File id="D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A/f:Migrations.cs" caret="861" fromTop="23" />
+      <File id="D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A/d:Views/d:Parts/f:OsmMap.cshtml" caret="683" fromTop="25" />
+    </RecentFiles>
+    <RecentEdits>
+      <File id="D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A/d:Views/d:Parts/f:OsmMap.cshtml" caret="21" fromTop="0" />
+      <File id="D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A/d:Views/d:Parts/f:OsmMap.cshtml" caret="558" fromTop="20" />
+      <File id="D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A/d:Views/d:Parts/f:OsmMap.cshtml" caret="683" fromTop="25" />
+    </RecentEdits>
+  </RecentFiles>
+  <NAntValidationSettings>
+    <NAntPath value="" />
+  </NAntValidationSettings>
+  <UnitTestRunner>
+    <Providers />
+  </UnitTestRunner>
+  <UnitTestRunnerNUnit>
+    <NUnitInstallDir IsNull="False">
+    </NUnitInstallDir>
+    <UseAddins>Never</UseAddins>
+  </UnitTestRunnerNUnit>
+</Configuration>

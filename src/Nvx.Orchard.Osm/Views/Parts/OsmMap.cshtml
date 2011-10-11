@@ -1,7 +1,7 @@
 ﻿@{
-    int zoom = 15;
-    int x = Nvx.Orchard.Osm.OsmMath.GetX(18, Model.Longitude);
-    int y = Nvx.Orchard.Osm.OsmMath.GetY(18, Model.Latitude);
+    int zoom = 18;
+    int x = Nvx.Orchard.Osm.OsmMath.GetX(zoom, Model.Longitude);
+    int y = Nvx.Orchard.Osm.OsmMath.GetY(zoom, Model.Latitude);
     if ((x & 1) == 0)
     {
         x=x-2;
