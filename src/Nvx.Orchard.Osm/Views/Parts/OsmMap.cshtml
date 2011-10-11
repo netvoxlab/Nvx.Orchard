@@ -1,6 +1,7 @@
 ﻿@{
-    int x = Nvx.Orchard.Osm.OsmMath.GetX(19, Model.Longitude);
-    int y = Nvx.Orchard.Osm.OsmMath.GetY(19, Model.Latitude);
+    int zoom = 15;
+    int x = Nvx.Orchard.Osm.OsmMath.GetX(18, Model.Longitude);
+    int y = Nvx.Orchard.Osm.OsmMath.GetY(18, Model.Latitude);
     if ((x & 1) == 0)
     {
         x=x-2;
@@ -12,18 +13,18 @@
     x /= 2;
     y /= 2;
 }
-<table cellpadding="0" cellspacing="0">
+<table cellpadding="0" cellspacing="0" style="border-collapse:collapse">
 <tr>
 <td>
-<img alt="Location" border="0" src="http://b.tile.openstreetmap.org/18/@(x)/@(y).png" />
+<img alt="Location" border="0" src="http://b.tile.openstreetmap.org/@(zoom+1)/@(x)/@(y).png" />
 </td>
 <td>
-<img alt="Location" border="0" src="http://b.tile.openstreetmap.org/18/@(x+1)/@(y).png" />
+<img alt="Location" border="0" src="http://b.tile.openstreetmap.org/@(zoom+1)/@(x+1)/@(y).png" />
 </td>
 </tr>
 <tr>
 <td>
-<img alt="Location" border="0" src="http://b.tile.openstreetmap.org/18/@(x)/@(y+1).png" />
+<img alt="Location" border="0" src="http://b.tile.openstreetmap.org/@(zoom+1)/@(x)/@(y+1).png" />
 </td>
 <td>
 <img alt="Location" border="0" src="http://b.tile.openstreetmap.org/18/@(x+1)/@(y+1).png" />

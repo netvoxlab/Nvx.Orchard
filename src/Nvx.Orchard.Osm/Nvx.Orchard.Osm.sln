@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nvx.Orchard.Osm", "Nvx.Orchard.Osm.csproj", "{D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
