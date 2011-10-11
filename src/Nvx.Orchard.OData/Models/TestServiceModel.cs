@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-
-namespace Orchard.Webservice.Models
+﻿namespace Nvx.Orchard.OData.Models
 {
 	public class TestServiceModel
 	{

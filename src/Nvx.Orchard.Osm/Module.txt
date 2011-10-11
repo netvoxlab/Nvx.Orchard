@@ -1,6 +1,6 @@
 Name: Nvx.Orchard.Osm
 AntiForgery: enabled
-Author: NetVox Lab Ltd.
+Author: NetVox Lab Ltd, The Orchard Team is welcome to make changes
 Website: http://netvoxlab.ru
 Version: 0.1
 OrchardVersion: 1.3
@@ -9,3 +9,4 @@ Features:
     Nvx.Orchard.Osm:
         Description: Open Street Map integration.
 		Category: Geolocation
+		Dependencies: Orchard.jQuery
