@@ -10,5 +10,4 @@ http://orchard.codeplex.com/releases/69668/download/288792
 После того как Orchard будет готов к работе можно вытащить репозиторий и разместить ссылки на проекты в папке src\Orchard.Web\Modules:
 mklink /D Nvx.Orchard.Osm Z:\NVX\Nvx.Orchard\src\Nvx.Orchard.Osm
 
-В Visual Studio подключаем проекты из репозитория и можно работать. Обратите внимание что если просто кликать на имена папок то Visual Studio "раскроет" ссылку и использует физический адрес и чуда не произойдёт. Важно чтобы в файле солюшена ссылка на проект выглядела так, как будто он размещён локально:
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nvx.Orchard.Osm", "Orchard.Web\Modules\Nvx.Orchard.Osm\Nvx.Orchard.Osm.csproj", "{D7E36C54-0F63-4C7B-8F43-E3FA5FC2C32A}"
+В Visual Studio подключаем проекты из репозитория и можно работать. 

@@ -4,19 +4,29 @@ using System.Data.Services.Providers;
 using Orchard.ContentManagement;
 
 namespace Nvx.Orchard.OData.Models {
-    public class  DataServiceMetadataProvider: IDataServiceMetadataProvider {
-        public DataSource DataSource { get; set; }
+    public class  OrchardDataServiceMetadataProvider: IDataServiceMetadataProvider {
+        public OrchardDataSource OrchardDataSource { get; set; }
         private Dictionary<string, ResourceType> resourceTypes = new Dictionary<string, ResourceType>();
         private Dictionary<string, ResourceSet> resourceSets = new Dictionary<string, ResourceSet>();
 
-        public DataServiceMetadataProvider(DataSource source)
+        public OrchardDataServiceMetadataProvider(OrchardDataSource source)
         {
-            DataSource = source;
+            OrchardDataSource = source;
 
-            foreach (var definition in DataSource.ContentManager.GetContentTypeDefinitions())
+            foreach (var definition in OrchardDataSource.ContentManager.GetContentTypeDefinitions())
             {
                 var name = definition.Name;
                 var r = new ResourceType(typeof(ContentItem), ResourceTypeKind.EntityType, null, null, name, false);
+
+                r.AddProperty(new ResourceProperty("Id", ResourcePropertyKind.Primitive|ResourcePropertyKind.Key, ResourceType.GetPrimitiveResourceType(typeof(int))));
+                r.AddProperty(new ResourceProperty("Version", ResourcePropertyKind.Primitive, ResourceType.GetPrimitiveResourceType(typeof(int))));
+
+                foreach (var part in definition.Parts) {
+                    foreach (var field in part.PartDefinition.Fields) {
+                        
+                    }
+                }
+                
                 r.SetReadOnly();
                 resourceTypes.Add(name, r);
                 var s = new ResourceSet(name, r);

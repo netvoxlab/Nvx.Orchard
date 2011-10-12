@@ -3,12 +3,15 @@ using System.Data.Services;
 using System.Data.Services.Providers;
 
 namespace Nvx.Orchard.OData.Models {
-    public class ServiceProvider<T> : DataService<T>, IServiceProvider where T : DataSource
+    public class ServiceProvider<T> : DataService<T>, IServiceProvider where T : OrchardDataSource
     {
-        DataServiceMetadataProvider DataServiceMetadataProvider;
+        private readonly OrchardDataSource _orchardDataSource;
+        OrchardDataServiceMetadataProvider _orchardDataServiceMetadataProvider;
+        private OrchardDataServiceQueryProvider<T> _query;
 
-        public ServiceProvider(DataSource dataSource) {
-            DataServiceMetadataProvider = new DataServiceMetadataProvider(dataSource);
+        public ServiceProvider(OrchardDataSource orchardDataSource) {
+            _orchardDataSource = orchardDataSource;
+            _orchardDataServiceMetadataProvider = new OrchardDataServiceMetadataProvider(orchardDataSource);
         }
 
         #region Implementation of IServiceProvider
@@ -23,18 +26,18 @@ namespace Nvx.Orchard.OData.Models {
         public object GetService(Type serviceType) {
             if (serviceType == typeof(IDataServiceMetadataProvider))
             {
-                return DataServiceMetadataProvider;
+                return _orchardDataServiceMetadataProvider;
             }
             //if (serviceType == typeof(IDataServicePagingProvider))
             //{
             //    return new MetaFormsDataServicePagingProvider();
             //}
-            //if (serviceType == typeof(IDataServiceQueryProvider))
-            //{
-            //    if (_query == null)
-            //        _query = new MetaFormsDataServiceQueryProvider(DataSource, this);
-            //    return _query;
-            //}
+            if (serviceType == typeof(IDataServiceQueryProvider))
+            {
+                if (_query == null)
+                    _query = new OrchardDataServiceQueryProvider<T>(_orchardDataSource, this);
+                return _query;
+            }
             //if (serviceType == typeof(IDataServiceStreamProvider))
             //{
             //    return new MetaFormsDataServiceStreamProvider();
