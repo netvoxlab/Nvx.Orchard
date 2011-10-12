@@ -39,12 +39,21 @@ namespace Nvx.Orchard.OData.Models {
         /// <param name="target">Instance to extract a resource type from.</param>
         public ResourceType GetResourceType(object target) {
             var contentItem = target as ContentItem;
-            if (contentItem == null)
-                return null;
-            var p = (IDataServiceMetadataProvider)_serviceProvider.GetService(typeof(IDataServiceMetadataProvider));
-            ResourceType r = null;
-            p.TryResolveResourceType(contentItem.ContentType, out r);
-            return r;
+            if (contentItem != null) {
+                var p = (IDataServiceMetadataProvider)_serviceProvider.GetService(typeof(IDataServiceMetadataProvider));
+                ResourceType r = null;
+                p.TryResolveResourceType(contentItem.ContentType, out r);
+                return r;
+            }
+            var contentPart = target as ContentPart;
+            if (contentPart != null)
+            {
+                var p = (IDataServiceMetadataProvider)_serviceProvider.GetService(typeof(IDataServiceMetadataProvider));
+                ResourceType r = null;
+                p.TryResolveResourceType(contentPart.TypePartDefinition.PartDefinition.Name, out r);
+                return r;
+            }
+            return null;
         }
 
         /// <summary>
@@ -55,7 +64,11 @@ namespace Nvx.Orchard.OData.Models {
         /// </returns>
         /// <param name="target">Instance of the type that declares the open property.</param><param name="resourceProperty">Value for the open property.</param>
         public object GetPropertyValue(object target, ResourceProperty resourceProperty) {
-            throw new NotImplementedException();
+            if (target is ContentItem)
+                return ((ContentItem) target).Parts.First(x => x.PartDefinition.Name == resourceProperty.Name);
+            if (target is ContentPart)
+                throw new NotImplementedException();
+            return null;
         }
 
         /// <summary>
