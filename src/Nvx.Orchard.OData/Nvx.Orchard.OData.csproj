@@ -46,6 +46,7 @@
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
     <Reference Include="System.Data.Services" />
+    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -84,8 +85,9 @@
     <Compile Include="Models\OrchardDataServiceMetadataProvider.cs" />
     <Compile Include="Models\OrchardDataSource.cs" />
     <Compile Include="Models\OrchardQueryable.cs" />
+    <Compile Include="Models\OrchardQueryContext.cs" />
     <Compile Include="Models\OrchardQueryProvider.cs" />
-    <Compile Include="Models\ServiceProvider.cs" />
+    <Compile Include="Models\OrchardServiceProvider.cs" />
     <Compile Include="Models\TestServiceModel.cs" />
     <Compile Include="Routes.cs" />
   </ItemGroup>

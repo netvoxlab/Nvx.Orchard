@@ -8,9 +8,9 @@ using Orchard.ContentManagement.MetaData.Models;
 namespace Nvx.Orchard.OData.Models {
     public class OrchardDataServiceQueryProvider<T>:IDataServiceQueryProvider where T : OrchardDataSource {
         private OrchardDataSource _dataSource;
-        private readonly ServiceProvider<T> _serviceProvider;
+        private readonly OrchardServiceProvider<T> _serviceProvider;
 
-        public OrchardDataServiceQueryProvider(OrchardDataSource dataSource, ServiceProvider<T> serviceProvider)
+        public OrchardDataServiceQueryProvider(OrchardDataSource dataSource, OrchardServiceProvider<T> serviceProvider)
         {
             _dataSource = dataSource;
             _serviceProvider = serviceProvider;

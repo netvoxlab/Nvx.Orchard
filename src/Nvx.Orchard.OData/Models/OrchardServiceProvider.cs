@@ -1,17 +1,32 @@
 ﻿using System;
 using System.Data.Services;
+using System.Data.Services.Common;
 using System.Data.Services.Providers;
 
 namespace Nvx.Orchard.OData.Models {
-    public class ServiceProvider<T> : DataService<T>, IServiceProvider where T : OrchardDataSource
+    public class OrchardServiceProvider<T> : DataService<T>, IServiceProvider where T : OrchardDataSource
     {
         private readonly OrchardDataSource _orchardDataSource;
         OrchardDataServiceMetadataProvider _orchardDataServiceMetadataProvider;
         private OrchardDataServiceQueryProvider<T> _query;
 
-        public ServiceProvider(OrchardDataSource orchardDataSource) {
+        public OrchardServiceProvider(OrchardDataSource orchardDataSource) {
             _orchardDataSource = orchardDataSource;
             _orchardDataServiceMetadataProvider = new OrchardDataServiceMetadataProvider(orchardDataSource);
+            
+        }
+
+        // This method is called only once to initialize service-wide policies.
+        public static void InitializeService(DataServiceConfiguration config) {
+            config.DataServiceBehavior.MaxProtocolVersion = DataServiceProtocolVersion.V2;
+            config.SetEntitySetAccessRule("*", EntitySetRights.All);
+            //// Grant only the rights needed to support the client application.
+            //config.SetEntitySetAccessRule("Orders", EntitySetRights.AllRead
+            //     | EntitySetRights.WriteMerge
+            //     | EntitySetRights.WriteReplace);
+            //config.SetEntitySetAccessRule("Order_Details", EntitySetRights.AllRead
+            //    | EntitySetRights.AllWrite);
+            //config.SetEntitySetAccessRule("Customers", EntitySetRights.AllRead);
         }
 
         #region Implementation of IServiceProvider

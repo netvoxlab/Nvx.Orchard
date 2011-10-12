@@ -35,17 +35,4 @@ namespace Nvx.Orchard.OData.Models {
 
         #endregion
     }
-
-    public class OrchardQueryContext
-    {
-        private readonly ContentTypeDefinition _type;
-
-        public OrchardQueryContext(ContentTypeDefinition type) {
-            _type = type;
-        }
-
-        public object Execute(Expression expression) {
-            throw new NotImplementedException();
-        }
-    }
 }

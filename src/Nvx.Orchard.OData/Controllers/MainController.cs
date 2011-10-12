@@ -22,11 +22,11 @@ namespace Nvx.Orchard.OData.Controllers
 		[HttpGet]
 		public ActionResult Index(params string[] resource) 
 		{
-            var p = new ServiceProvider<OrchardDataSource>(new OrchardDataSource(_contentManager));
+            var p = new OrchardServiceProvider<OrchardDataSource>(new OrchardDataSource(_contentManager));
+            
 		    var host = new OrchardDataServiceHost(Request);
 		    p.AttachHost(host);
             p.ProcessRequest();
-
 		    return new FileContentResult(host.Content, host.ResponseContentType);
 		}
 
