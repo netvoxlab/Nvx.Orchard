@@ -27,7 +27,7 @@ namespace Nvx.Orchard.OData.Models {
         /// <param name="resourceSet">The resource set.</param>
         public IQueryable GetQueryRootForResourceSet(ResourceSet resourceSet) {
             var type = (ContentTypeDefinition)resourceSet.CustomState;
-            return new OrchardQueryable<ContentItem>(type);
+            return new OrchardQueryable<ContentItem>(type, _dataSource);
         }
 
         /// <summary>

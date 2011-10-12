@@ -10,11 +10,13 @@ namespace Nvx.Orchard.OData.Models {
     public class OrchardQueryable<T> : IOrderedQueryable<T>
     {
         private readonly ContentTypeDefinition _type;
+        private readonly OrchardDataSource _dataSource;
 
-        public OrchardQueryable(ContentTypeDefinition type) {
+        public OrchardQueryable(ContentTypeDefinition type, OrchardDataSource dataSource) {
             _type = type;
+            _dataSource = dataSource;
 
-            Provider = new OrchardQueryProvider(type);
+            Provider = new OrchardQueryProvider(type, _dataSource);
             Expression = Expression.Constant(this);
             ElementType = typeof (ContentItem);
         }
