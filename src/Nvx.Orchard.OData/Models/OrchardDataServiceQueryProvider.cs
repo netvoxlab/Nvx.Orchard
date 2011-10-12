@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Data.Services.Providers;
 using System.Linq;
+using Orchard.ContentManagement;
+using Orchard.ContentManagement.MetaData.Models;
 
 namespace Nvx.Orchard.OData.Models {
     public class OrchardDataServiceQueryProvider<T>:IDataServiceQueryProvider where T : OrchardDataSource {
@@ -24,7 +26,8 @@ namespace Nvx.Orchard.OData.Models {
         /// </returns>
         /// <param name="resourceSet">The resource set.</param>
         public IQueryable GetQueryRootForResourceSet(ResourceSet resourceSet) {
-            throw new NotImplementedException();
+            var type = (ContentTypeDefinition)resourceSet.CustomState;
+            return new OrchardQueryable<ContentItem>(type);
         }
 
         /// <summary>
@@ -35,7 +38,13 @@ namespace Nvx.Orchard.OData.Models {
         /// </returns>
         /// <param name="target">Instance to extract a resource type from.</param>
         public ResourceType GetResourceType(object target) {
-            throw new NotImplementedException();
+            var contentItem = target as ContentItem;
+            if (contentItem == null)
+                return null;
+            var p = (IDataServiceMetadataProvider)_serviceProvider.GetService(typeof(IDataServiceMetadataProvider));
+            ResourceType r = null;
+            p.TryResolveResourceType(contentItem.ContentType, out r);
+            return r;
         }
 
         /// <summary>
@@ -100,7 +109,7 @@ namespace Nvx.Orchard.OData.Models {
         /// A <see cref="T:System.Boolean"/> value that indicates whether null propagation is required.
         /// </returns>
         public bool IsNullPropagationRequired {
-            get { throw new NotImplementedException(); }
+            get { return true; }
         }
 
         #endregion

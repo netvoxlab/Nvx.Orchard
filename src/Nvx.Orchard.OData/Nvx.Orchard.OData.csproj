@@ -78,10 +78,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controllers\MainController.cs" />
+    <Compile Include="Models\OrchardDataServicePagingProvider.cs" />
     <Compile Include="Models\OrchardDataServiceQueryProvider.cs" />
     <Compile Include="Models\OrchardDataServiceHost.cs" />
     <Compile Include="Models\OrchardDataServiceMetadataProvider.cs" />
     <Compile Include="Models\OrchardDataSource.cs" />
+    <Compile Include="Models\OrchardQueryable.cs" />
+    <Compile Include="Models\OrchardQueryProvider.cs" />
     <Compile Include="Models\ServiceProvider.cs" />
     <Compile Include="Models\TestServiceModel.cs" />
     <Compile Include="Routes.cs" />

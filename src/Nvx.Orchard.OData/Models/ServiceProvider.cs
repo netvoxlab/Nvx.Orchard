@@ -28,10 +28,10 @@ namespace Nvx.Orchard.OData.Models {
             {
                 return _orchardDataServiceMetadataProvider;
             }
-            //if (serviceType == typeof(IDataServicePagingProvider))
-            //{
-            //    return new MetaFormsDataServicePagingProvider();
-            //}
+            if (serviceType == typeof(IDataServicePagingProvider))
+            {
+                return new OrchardDataServicePagingProvider();
+            }
             if (serviceType == typeof(IDataServiceQueryProvider))
             {
                 if (_query == null)
