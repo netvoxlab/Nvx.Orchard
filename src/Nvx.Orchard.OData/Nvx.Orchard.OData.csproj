@@ -89,9 +89,15 @@
     <Compile Include="Models\OrchardQueryProvider.cs" />
     <Compile Include="Models\OrchardServiceProvider.cs" />
     <Compile Include="Models\TestServiceModel.cs" />
+    <Compile Include="Models\Visitors\OrchardExpressionVisitor.cs" />
+    <Compile Include="Models\Visitors\OrchardQueryTranslator.cs" />
+    <Compile Include="Models\Visitors\RootVisitor.cs" />
+    <Compile Include="Models\Visitors\WhereArgumentsVisitor.cs" />
     <Compile Include="Routes.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Models\Expressions\" />
+  </ItemGroup>
   <ItemGroup>
     <None Include="Views\Main\TestService.cshtml" />
   </ItemGroup>

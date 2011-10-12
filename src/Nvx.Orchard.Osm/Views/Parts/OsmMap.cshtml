@@ -1,4 +1,7 @@
-﻿@{
+﻿@{ 
+    Script.Require("Nvx_Orchard_Osm");
+}
+@{
     int z = 17;
     int mask = (1 << z) - 1;
     int x = Nvx.Orchard.Osm.OsmMath.GetX(z + 1, Model.Longitude);
