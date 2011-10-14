@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using System.Data.Services.Providers;
 using Orchard.ContentManagement;
+using Orchard.ContentManagement.MetaData.Models;
 
 namespace Nvx.Orchard.OData.Models {
     public class  OrchardDataServiceMetadataProvider: IDataServiceMetadataProvider {
         public OrchardDataSource OrchardDataSource { get; set; }
         private Dictionary<string, ResourceType> resourceTypes = new Dictionary<string, ResourceType>();
         private Dictionary<string, ResourceSet> resourceSets = new Dictionary<string, ResourceSet>();
-
         public OrchardDataServiceMetadataProvider(OrchardDataSource source)
         {
             OrchardDataSource = source;
@@ -22,11 +22,12 @@ namespace Nvx.Orchard.OData.Models {
                 r.AddProperty(new ResourceProperty("Version", ResourcePropertyKind.Primitive, ResourceType.GetPrimitiveResourceType(typeof(int))));
 
                 foreach (var part in definition.Parts) {
-                    foreach (var field in part.PartDefinition.Fields) {
-                        
-                    }
+                    var propertyResourceType = GetComplexResourceType(part);
+                    var resourceProperty = new ResourceProperty(part.PartDefinition.Name, ResourcePropertyKind.ComplexType, propertyResourceType);
+                    resourceProperty.CanReflectOnInstanceTypeProperty = false;
+                    r.AddProperty(resourceProperty);
                 }
-                
+
                 r.SetReadOnly();
                 resourceTypes.Add(name, r);
                 var s = new ResourceSet(name, r);
@@ -34,6 +35,23 @@ namespace Nvx.Orchard.OData.Models {
                 s.SetReadOnly();
                 resourceSets.Add(name, s);
             }
+        }
+
+        private ResourceType GetComplexResourceType(ContentTypePartDefinition part) {
+            ResourceType t;
+            var name = part.PartDefinition.Name;
+            if (resourceTypes.TryGetValue(name, out t))
+                return t;
+            t = new ResourceType(typeof(ContentPart), ResourceTypeKind.ComplexType, null, null, name, false);
+            t.CanReflectOnInstanceType = false;
+            t.AddProperty(new ResourceProperty("Id", ResourcePropertyKind.Primitive, ResourceType.GetPrimitiveResourceType(typeof(int))));
+            foreach (var field in part.PartDefinition.Fields)
+            {
+            }
+            t.SetReadOnly();
+            resourceTypes.Add(name, t);
+
+            return t;
         }
 
         #region Implementation of IDataServiceMetadataProvider

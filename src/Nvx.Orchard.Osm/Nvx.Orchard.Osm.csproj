@@ -58,6 +58,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Scripts\nvx.orchard.osm.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Web.config" />
     <Content Include="Scripts\Web.config" />
@@ -81,6 +82,7 @@
     <Compile Include="Migrations.cs" />
     <Compile Include="Models\OpenStreetMapNode.cs" />
     <Compile Include="OsmMath.cs" />
+    <Compile Include="ResourceManifest.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />

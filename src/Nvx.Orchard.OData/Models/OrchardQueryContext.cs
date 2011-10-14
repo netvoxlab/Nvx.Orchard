@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq.Expressions;
+using Nvx.Orchard.OData.Models.Visitors;
 using Orchard.ContentManagement.MetaData.Models;
 using Orchard.ContentManagement;
 
@@ -21,11 +22,11 @@ namespace Nvx.Orchard.OData.Models {
             return q.List();
         }
 
-        private void TranslateExpression(IContentQuery<ContentItem> contentQuery, Expression expression) 
-		{
-			//contentQuery.Where()
-			// expression преобразовать expression в Linq запрос
-            
+
+        private object TranslateExpression(IContentQuery<ContentItem> contentQuery, Expression expression)
+        {
+            var translator = new OrchardQueryTranslator(_type,_dataSource);
+            return translator.Translate(contentQuery, expression);
         }
     }
 }
