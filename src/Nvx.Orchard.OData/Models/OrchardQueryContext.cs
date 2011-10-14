@@ -21,7 +21,10 @@ namespace Nvx.Orchard.OData.Models {
             return q.List();
         }
 
-        private void TranslateExpression(IContentQuery<ContentItem> contentQuery, Expression expression) {
+        private void TranslateExpression(IContentQuery<ContentItem> contentQuery, Expression expression) 
+		{
+			//contentQuery.Where()
+			// expression преобразовать expression в Linq запрос
             
         }
     }
