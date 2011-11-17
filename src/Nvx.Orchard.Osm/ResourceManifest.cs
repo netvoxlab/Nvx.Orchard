@@ -11,7 +11,7 @@ namespace Nvx.Orchard.Osm
         public void BuildManifests(ResourceManifestBuilder builder) {
             var manifest = builder.Add();
 
-            manifest.DefineScript("Nvx_Orchard_Osm").SetUrl("nvx.orchard.osm.js", "nvx.orchard.osm.js").SetVersion("0.0.1").SetDependencies("jQuery");
+            manifest.DefineScript("jQuery_Jump").SetUrl("jump.min.js", "jump.min.js").SetVersion("0.0.2").SetDependencies("jQuery");
         }
     }
 }
