@@ -4,7 +4,7 @@ Author: NetVox Lab Ltd, The Orchard Team is welcome to make changes
 Website: http://netvoxlab.ru
 Version: 0.1
 OrchardVersion: 1.3
-Description: Open Street Map integration
+Description: Open Street Map integration using jQuery Jump plugin
 Features:
     Nvx.Orchard.Osm:
         Description: Open Street Map integration.
