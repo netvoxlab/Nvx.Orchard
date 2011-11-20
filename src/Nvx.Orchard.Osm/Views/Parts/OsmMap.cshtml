@@ -1,10 +1,14 @@
-﻿
+﻿@using Nvx.Orchard.Osm.Handlers
+
+@*@model Nvx.Orchard.Osm.Models.OpenStreetMapNodePart*@
+
 @{ 
     Script.Require("jQuery_Jump");
 }
 @{
     //int mapCounter = System.Random.Next(0,1000);
-    var mapid = "jquery_jump_" + Model.GetHashCode();// Html.FieldIdFor(m => Model.Longitude);//  Html.FieldIdFor(m => Model);// mapCounter;
+    //var mapid = "jquery_jump_" + Model.GetHashCode();// Html.FieldIdFor(m => Model.Longitude);//  Html.FieldIdFor(m => Model);// mapCounter;
+    var mapid = "jquery_jump_" + OpenStreetMapNodeHandler.GetNextUniqueMapControlId();
     var lon = string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", Model.Longitude);
     var lat = string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", Model.Latitude);
 }
