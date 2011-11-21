@@ -1,0 +1,46 @@
+﻿@model Nvx.Fields.Models.MapPart
+@using Nvx.Fields.MapInfrastructure
+
+@{
+    Style.Include("map.css");
+    Style.Require("jQueryUI_Orchard");
+
+    Script.Require("jQuery");
+    Script.Require("jQueryUtils");
+    Script.Require("jQueryUI_Core");
+    Script.Require("jQueryUI_Widget");
+}
+
+<fieldset>
+  <legend>Map Fields</legend>
+             
+  <div class="editor-label">
+    @Html.LabelFor(model => model.Address)
+  </div>
+  <div class="editor-field">
+    @Html.TextBoxFor(model => model.Address)
+    @Html.ValidationMessageFor(model => model.Address)
+  </div>
+           
+  <div class="editor-label">
+    @Html.LabelFor(model => model.Latitude)
+  </div>
+  <div class="editor-field">
+    @Html.TextBoxFor(model => model.Latitude)
+    @Html.ValidationMessageFor(model => model.Latitude)
+  </div>
+
+  <div class="editor-label">
+    @Html.LabelFor(model => model.Longitude)
+  </div>
+  <div class="editor-field">
+    @Html.TextBoxFor(model => model.Longitude)
+    @Html.ValidationMessageFor(model => model.Longitude)
+  </div>
+           
+  <img alt="Location" border="1" src="@MapProcessor.GetStaticMapurl(450,450,Model.Latitude,Model.Longitude)" /> 
+</fieldset>
+
+
+
+    

@@ -1,0 +1,17 @@
+﻿@model Nvx.Fields.ViewModels.FloatFieldViewModel
+
+@{
+Style.Include("float.css");
+Style.Require("jQueryUI_Orchard");
+
+Script.Require("jQuery");
+Script.Require("jQueryUtils");
+Script.Require("jQueryUI_Core");
+Script.Require("jQueryUI_Widget");
+}
+
+<fieldset>
+  <label for="@Html.FieldIdFor(m => Model.Value)">@Model.Name</label>
+
+  <span class="flaot">@Html.EditorFor(m => Model.Value)</span>
+</fieldset>
