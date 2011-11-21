@@ -1,0 +1,8 @@
+﻿<Placement>
+    <Place Fields_Custom_DateTime_Edit="Content:2.5"/>
+    <Place Fields_Custom_DateTime="Content:2.5"/>    
+    <Place Fields_Custom_Float_Edit="Content:2.6"/>
+    <Place Fields_Custom_Float="Content:2.6"/>
+    <Place Parts_Map="Content:10"/>
+    <Place Parts_Map_Edit="Content:7.5"/>
+</Placement>

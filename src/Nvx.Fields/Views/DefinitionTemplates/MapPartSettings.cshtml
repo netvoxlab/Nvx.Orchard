@@ -1,0 +1,8 @@
+﻿@model Nvx.Fields.Settings.MapPartSettings
+<fieldset>
+    <div>
+        @Html.LabelFor(m => m.Engine, T("Maps API"))
+        @Html.DropDownListFor(m => m.Engine,
+        new System.Web.Mvc.SelectList(Model.EngineTypes, "Value", "Text", (int)Model.Engine))
+    </div>
+</fieldset>

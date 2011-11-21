@@ -1,0 +1,31 @@
+﻿@using Nvx.Fields.MapInfrastructure
+ 
+<span class="arrdess">@Model.Adress </span>
+<div id="@Model.ModelId" style="width:600px;height:400px"></div>
+<script type="text/javascript" src="@MapProcessor.MakeMap("@Model.ModelId")"></script>
+<script type="text/javascript">
+        // Создает обработчик события window.onLoad
+        YMaps.jQuery(function () {
+            // Создает экземпляр карты и привязывает его к созданному контейнеру
+            var map = new YMaps.Map(YMaps.jQuery('#@Model.ModelId')[0]);
+            map.enableScrollZoom();
+            map.addControl(new YMaps.TypeControl());
+            map.addControl(new YMaps.Zoom());            
+            //map.addControl(new YMaps.ScaleLine());            
+            // Устанавливает начальные параметры отображения карты: центр карты и коэффициент масштабирования
+            map.setCenter(new YMaps.GeoPoint(@Model.Latitude.ToString().Replace(',','.'),@Model.Longitude.ToString().Replace(',', '.')), 14);
+
+            var placemark = new YMaps.Placemark(new YMaps.GeoPoint(@Model.Latitude.ToString().Replace(',','.'),@Model.Longitude.ToString().Replace(',','.')));
+            placemark.name = "@Model.Adress";
+            placemark.description = "@Model.Adress";
+
+            // Задает содержимое балуна наиболее приоритетным способом
+            placemark.setBalloonContent("<div>@Model.Adress</div>");
+
+            map.addOverlay(placemark);
+
+            // Открывает балун с надписью: <div>Новое описание метки</div>
+            placemark.openBalloon();
+        })
+    </script>
+

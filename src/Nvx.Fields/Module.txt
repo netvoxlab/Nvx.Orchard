@@ -1,0 +1,19 @@
+Name: Nvx.Fields
+AntiForgery: enabled
+Author: holinov@netvoxlab.ru
+Website: http://www.netvoxlab.ru
+Version: 0.1
+OrchardVersion: 1.0
+Description: A bunch of custom fields for use in your custom content types.
+Features:
+    Nvx.Fields:
+        Description: Custom fields for Orchard.
+        Category: Fields
+    DateTimeField:
+        Description: A date and time field with a friendly UI.
+        Category: Fields
+        Dependencies: Nvx.Fields, Orchard.jQuery, Common, Settings
+    FloatField:
+        Description: Float field with decimal digits specification.
+        Category: Fields
+        Dependencies: Nvx.Fields, Orchard.jQuery, Common, Settings

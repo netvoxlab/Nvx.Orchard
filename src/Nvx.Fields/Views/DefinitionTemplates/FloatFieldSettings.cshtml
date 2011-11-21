@@ -1,0 +1,10 @@
+﻿@model Nvx.Fields.Settings.FloatFieldSettings
+@using Nvx.Fields.Settings;
+
+<fieldset>
+    <label for="@Html.FieldIdFor(m => m.Decimals)">@T("Decimal digits")</label>  
+    @Html.EditorFor(m => m.Decimals)
+
+    @Html.ValidationMessageFor(m => m.Decimals)
+        
+</fieldset>
