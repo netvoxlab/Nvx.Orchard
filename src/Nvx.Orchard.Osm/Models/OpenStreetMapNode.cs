@@ -37,5 +37,9 @@ namespace Nvx.Orchard.Osm.Models
             get { return Record.NodeId; }
             set { Record.NodeId = value; }
         }
+
+        public int Id { get { return Record.Id; } }
+        public string LatitudeJS { get { return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", Latitude); } }
+        public string LongitudeJS { get { return string.Format(System.Globalization.CultureInfo.InvariantCulture, "{0}", Longitude); } }
     }
 }

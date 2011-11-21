@@ -14,5 +14,11 @@ namespace Nvx.Orchard.Osm.Handlers
         {
             Filters.Add(StorageFilter.For(repository));
         }
+
+        private static volatile int mapId = 0;
+
+        public static string GetNextUniqueMapControlId() {
+            return "map"+ (++mapId);
+        }
     }
 }

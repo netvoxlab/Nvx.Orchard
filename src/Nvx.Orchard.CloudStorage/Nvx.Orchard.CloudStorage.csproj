@@ -1,16 +1,16 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{500D5476-B8A3-4278-8519-B1C089813232}</ProjectGuid>
+    <ProjectGuid>{E22BE60F-5CCB-45E7-88B9-9A2D90B05336}</ProjectGuid>
     <ProjectTypeGuids>{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Nvx.Orchard.OData</RootNamespace>
-    <AssemblyName>Nvx.Orchard.OData</AssemblyName>
+    <RootNamespace>Nvx.Orchard.CloudStorage</RootNamespace>
+    <AssemblyName>Nvx.Orchard.CloudStorage</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <FileUpgradeFlags>
@@ -45,8 +45,6 @@
     <Reference Include="System.ComponentModel.DataAnnotations">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
-    <Reference Include="System.Data.Services" />
-    <Reference Include="System.Data.Services.Client" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -66,6 +64,12 @@
     <Content Include="Styles\Web.config" />
     <Content Include="Properties\AssemblyInfo.cs" />
     <Content Include="Module.txt" />
+    <Folder Include="Properties" />
+    <Folder Include="Controllers" />
+    <Folder Include="Views" />
+    <Folder Include="Models" />
+    <Folder Include="Scripts" />
+    <Folder Include="Styles" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Orchard\Orchard.Framework.csproj">
@@ -76,30 +80,6 @@
       <Project>{9916839C-39FC-4CEB-A5AF-89CA7E87119F}</Project>
       <Name>Orchard.Core</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Controllers\MainController.cs" />
-    <Compile Include="Models\OrchardDataServicePagingProvider.cs" />
-    <Compile Include="Models\OrchardDataServiceQueryProvider.cs" />
-    <Compile Include="Models\OrchardDataServiceHost.cs" />
-    <Compile Include="Models\OrchardDataServiceMetadataProvider.cs" />
-    <Compile Include="Models\OrchardDataSource.cs" />
-    <Compile Include="Models\OrchardQueryable.cs" />
-    <Compile Include="Models\OrchardQueryContext.cs" />
-    <Compile Include="Models\OrchardQueryProvider.cs" />
-    <Compile Include="Models\OrchardServiceProvider.cs" />
-    <Compile Include="Models\TestServiceModel.cs" />
-    <Compile Include="Models\Visitors\OrchardExpressionVisitor.cs" />
-    <Compile Include="Models\Visitors\OrchardQueryTranslator.cs" />
-    <Compile Include="Models\Visitors\RootVisitor.cs" />
-    <Compile Include="Models\Visitors\WhereArgumentsVisitor.cs" />
-    <Compile Include="Routes.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\Expressions\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Views\Main\TestService.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
@@ -122,5 +102,22 @@
   <Target Name="AfterBuildCompiler" Condition="'$(MvcBuildViews)'=='true'">
     <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)\..\$(ProjectName)" />
   </Target>
-  <ProjectExtensions />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>45979</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>True</UseCustomServer>
+          <CustomServerUrl>http://orchard.codeplex.com</CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
 </Project>

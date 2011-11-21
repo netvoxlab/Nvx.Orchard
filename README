@@ -1,1 +1,13 @@
 Orchard CMS modules by NetVox Lab Ltd.
+
+RUS -----------------------------------
+
+-  ак работать с модул€ми?
+
+ƒл€ того чтобы нормально работать с модул€ми надо скачать и запустить Orchard CMS в варианте с исходным кодом. —ам архив можно вз€ть, например, тут:
+http://orchard.codeplex.com/releases/69668/download/288792
+
+ѕосле того как Orchard будет готов к работе можно вытащить репозиторий и разместить ссылки на проекты в папке src\Orchard.Web\Modules:
+mklink /D Nvx.Orchard.Osm Z:\NVX\Nvx.Orchard\src\Nvx.Orchard.Osm
+
+¬ Visual Studio подключаем проекты из репозитори€ и можно работать. 
